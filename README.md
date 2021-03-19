@@ -4,6 +4,7 @@
 
 | Column             | Type   | Options                   |
 | -----------------  | ------ | ------------------------- |
+| nickname           | string | null: false               |
 | email              | string | null: false               |
 | encrypted_password | string | null: false, unique: true |               
 | first_name         | string | null: false               |
@@ -18,7 +19,7 @@
 
 - has_many :products
 - has_many :comments
-- has_one :buyer
+
 
 
 ## products テーブル
@@ -39,6 +40,7 @@
 
 - has_many :comments
 - belongs_to :user
+- belongs_to :buyer
 
 
 ## comments テーブル
@@ -61,12 +63,25 @@
 | postal_code      | string     | null: false                     | 
 | city             | string     | null: false                     |
 | numbering        | string     | null: false                     |
-| building_name    | string     | null: false                     | 
+| building_name    | string     |                                 | 
 | telephone_number | string     | null: false                     |
-| user             | references | null: false, foreign_key: true  |
+
 
 ### Association
 
 - has_many :products
+
+
+## product_users テーブル
+
+| Column     | Type       | Options                        |
+| ---------- | ---------- | ------------------------------ |
+| product_id | text       | null: false, foreign_key: true |
+| user_id    | references | null: false, foreign_key: true |
+
+
+### Association
+
 - belongs_to :user
+- belongs_to :product
 
