@@ -2,22 +2,24 @@
 
 ## users テーブル
 
-| Column             | Type   | Options     |
-| -----------------  | ------ | ----------- |
-| email              | string | null: false |
-| encrypted_password | string | null: false |
-| first_name         | string | null: false |
-| last_name          | string | null: false |
-| first_name_kana    | string | null: false |
-| last_name_kana     | string | null: false |
-| birth_day          | date   | null: false |
+| Column             | Type   | Options                   |
+| -----------------  | ------ | ------------------------- |
+| email              | string | null: false               |
+| encrypted_password | string | null: false, unique: true |               
+| first_name         | string | null: false               |
+| last_name          | string | null: false               |
+| first_name_kana    | string | null: false               |
+| last_name_kana     | string | null: false               |
+| birth_day          | date   | null: false               |
 
 
 
 ### Association
 
-- belong_to :products
+- has_many :products
 - has_many :comments
+- has_one :buyer
+
 
 ## products テーブル
 
@@ -36,7 +38,7 @@
 ### Association
 
 - has_many :comments
-- has_many :users
+- belongs_to :user
 
 
 ## comments テーブル
@@ -50,22 +52,21 @@
 ### Association
 
 - belongs_to :users
-- belongs_to :products
+- belongs_to :product
 
-## products テーブル
+## buyers テーブル
 
 | Column           | Type       | Options                         |
 | ---------------- | ---------- | ------------------------------- |
-| postal_code      | text       | null: false                     | 
-| prefecture       | integer    | null: false                     |
-| city             | integer    | null: false                     |
-| numbering        | integer    | null: false                     |
-| building_name    | integer    | null: false                     | 
-| telephone_number | integer    | null: false                     |
-|                  | integer    | null: false                     |
+| postal_code      | string     | null: false                     | 
+| city             | string     | null: false                     |
+| numbering        | string     | null: false                     |
+| building_name    | string     | null: false                     | 
+| telephone_number | string     | null: false                     |
+| user             | references | null: false, foreign_key: true  |
 
 ### Association
 
-- has_many :comments
-- has_many :users
+- has_many :products
+- belongs_to :user
 
