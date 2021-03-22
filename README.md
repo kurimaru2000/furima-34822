@@ -77,15 +77,15 @@
 
 ## product_users テーブル
 
-| Column  | Type       | Options                        |
-| ------- | ---------- | ------------------------------ |
-| product | reference  | null: false, foreign_key: true |
-| user    | reference  | null: false, foreign_key: true |
+| Column  | Type        | Options                        |
+| ------- | ----------- | ------------------------------ |
+| product | references  | null: false, foreign_key: true |
+| user    | references  | null: false, foreign_key: true |
 
 
 ### Association
 
 - belongs_to :user
 - belongs_to :product
-- has_one    :buyers
+- has_one    :buyer
 
