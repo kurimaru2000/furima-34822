@@ -34,7 +34,7 @@
 | delivery_days_id | integer    | null: false                     |
 | price            | integer    | null: false                     |
 | description      | text       | null: false                     |
-| user             | references | null: false,  foreign_key: true |
+| user             | reference  | null: false,  foreign_key: true |
 
 ### Association
 
@@ -50,8 +50,8 @@
 | Column    | Type       | Options                        |
 | --------- | ---------- | ------------------------------ |
 | text      | text       | null: false                    |
-| user      | references | null: false, foreign_key: true |
-| product   | references | null: false, foreign_key: true |
+| user      | reference  | null: false, foreign_key: true |
+| product   | reference  | null: false, foreign_key: true |
 
 ### Association
 
@@ -68,19 +68,19 @@
 | numbering        | string     | null: false                     |
 | building_name    | string     |                                 | 
 | telephone_number | string     | null: false                     |
-| product_users    |references  | null: false, foreign_key: true  |
+| product_user     | reference  | null: false, foreign_key: true  |
 
 ### Association
 
-- belongs_to :product_users
+- belongs_to :product_user
 
 
 ## product_users テーブル
 
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
-| product | references | null: false, foreign_key: true |
-| user    | references | null: false, foreign_key: true |
+| product | reference  | null: false, foreign_key: true |
+| user    | reference  | null: false, foreign_key: true |
 
 
 ### Association
