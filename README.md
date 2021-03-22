@@ -19,7 +19,7 @@
 
 - has_many :products
 - has_many :comments
-- has_many :product_user
+- has_many :product_users
 
 
 ## products テーブル
@@ -30,7 +30,7 @@
 | category_id      | integer    | null: false                     |
 | status_id        | integer    | null: false                     |
 | delivery_fee_id  | integer    | null: false                     |
-| area_id          | integer    | null: false                     | 
+| prefecture_id    | integer    | null: false                     | #発送下の地域
 | delivery_days_id | integer    | null: false                     |
 | price            | integer    | null: false                     |
 | description      | text       | null: false                     |
@@ -41,6 +41,7 @@
 - has_many :comments
 - has_many :users
 - has_many :comments
+
 
 
 
@@ -62,16 +63,16 @@
 | Column           | Type       | Options                         |
 | ---------------- | ---------- | ------------------------------- |
 | postal_code      | string     | null: false                     | 
-| prefecture       | string     | null: false                     |
+| prefecture_id    | integer    | null: false                     | #発送先の地域
 | city             | string     | null: false                     |
 | numbering        | string     | null: false                     |
 | building_name    | string     |                                 | 
 | telephone_number | string     | null: false                     |
-
+| product_users    |references  | null: false, foreign_key: true  |
 
 ### Association
 
-- has_many :product_users
+- belongs_to :product_users
 
 
 ## product_users テーブル
