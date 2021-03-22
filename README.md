@@ -38,9 +38,9 @@
 
 ### Association
 
-- has_many :comments
-- has_many :users
-- has_many :product_user
+- has_many   :comments
+- has_one  :product_user
+- belongs_to :user
 
 
 
@@ -87,5 +87,5 @@
 
 - belongs_to :user
 - belongs_to :product
-- has_many_ :buyers
+- has_one    :buyers
 
