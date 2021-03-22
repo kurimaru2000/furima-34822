@@ -5,8 +5,8 @@
 | Column             | Type   | Options                   |
 | -----------------  | ------ | ------------------------- |
 | nickname           | string | null: false               |
-| email              | string | null: false               |
-| encrypted_password | string | null: false, unique: true |               
+| email              | string | null: false  unique: true |
+| encrypted_password | string | null: false,              |               
 | first_name         | string | null: false               |
 | last_name          | string | null: false               |
 | first_name_kana    | string | null: false               |
@@ -19,7 +19,7 @@
 
 - has_many :products
 - has_many :comments
-
+- has_many :product_user
 
 
 ## products テーブル
@@ -39,8 +39,9 @@
 ### Association
 
 - has_many :comments
-- belongs_to :user
-- belongs_to :buyer
+- has_many :users
+- has_many :comments
+
 
 
 ## comments テーブル
@@ -53,7 +54,7 @@
 
 ### Association
 
-- belongs_to :users
+- belongs_to :user
 - belongs_to :product
 
 ## buyers テーブル
@@ -61,6 +62,7 @@
 | Column           | Type       | Options                         |
 | ---------------- | ---------- | ------------------------------- |
 | postal_code      | string     | null: false                     | 
+| prefecture       | string     | null: false                     |
 | city             | string     | null: false                     |
 | numbering        | string     | null: false                     |
 | building_name    | string     |                                 | 
@@ -69,19 +71,20 @@
 
 ### Association
 
-- has_many :products
+- has_many :product_users
 
 
 ## product_users テーブル
 
-| Column     | Type       | Options                        |
-| ---------- | ---------- | ------------------------------ |
-| product_id | text       | null: false, foreign_key: true |
-| user_id    | references | null: false, foreign_key: true |
+| Column  | Type       | Options                        |
+| ------- | ---------- | ------------------------------ |
+| product | references | null: false, foreign_key: true |
+| user    | references | null: false, foreign_key: true |
 
 
 ### Association
 
 - belongs_to :user
 - belongs_to :product
+- has_many_ :buyers
 
