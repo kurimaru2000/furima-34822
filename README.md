@@ -26,7 +26,7 @@
 
 | Column           | Type       | Options                         |
 | ---------------- | ---------- | ------------------------------- |
-| item_name        | string     | null: false                     | 
+| name             | string     | null: false                     | 
 | category_id      | integer    | null: false                     |
 | status_id        | integer    | null: false                     |
 | delivery_fee_id  | integer    | null: false                     |
@@ -34,13 +34,13 @@
 | delivery_days_id | integer    | null: false                     |
 | price            | integer    | null: false                     |
 | description      | text       | null: false                     |
-| user             | reference  | null: false,  foreign_key: true |
+| user             | references | null: false,  foreign_key: true |
 
 ### Association
 
 - has_many :comments
 - has_many :users
-- has_many :comments
+- has_many :product_user
 
 
 
@@ -50,8 +50,8 @@
 | Column    | Type       | Options                        |
 | --------- | ---------- | ------------------------------ |
 | text      | text       | null: false                    |
-| user      | reference  | null: false, foreign_key: true |
-| product   | reference  | null: false, foreign_key: true |
+| user      | references | null: false, foreign_key: true |
+| product   | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -68,7 +68,7 @@
 | numbering        | string     | null: false                     |
 | building_name    | string     |                                 | 
 | telephone_number | string     | null: false                     |
-| product_user     | reference  | null: false, foreign_key: true  |
+| product_user     | references | null: false, foreign_key: true  |
 
 ### Association
 
